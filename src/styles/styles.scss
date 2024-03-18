@@ -1,0 +1,81 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+.ks-modal-gallery-backdrop {
+    background: #000 !important;
+    ;
+    opacity: 0.85 !important;
+    ;
+}
+
+.ks-modal-gallery-panel {
+    z-index: 90000 !important;
+}
+
+.light.theme-rose .logo_white,
+.dark.theme-rose .logo_black {
+    display: none !important;
+
+    @media all and (max-width:959px) {
+        display: none !important;
+    }
+}
+
+.dark.theme-rose .logo_white,
+.light.theme-rose .logo_black {
+    display: block !important;
+
+    @media all and (max-width:959px) {
+        display: none !important;
+    }
+}
+
+td.mat-cell {
+    min-width: 120px;
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+}
+
+.mat-table thead {
+    background: #F8FAFC !important;
+}
+
+.mat-header-cell {
+    font-size: 13px;
+}
+.custom_table{
+    overflow: auto;
+    height: calc(100vh - 250px);
+
+    .name_col{
+        cursor: pointer;
+
+        &:hover{
+            color: #f43f5e;
+        }
+    }
+
+    @media all and (max-width:599px){
+        height: calc(100vh - 380px);
+    }
+}
+
+.previews-container{
+    display: none!important;
+}
+.right-sub-container,.left-sub-container{
+    img{
+        display: none!important;
+    }
+}
+
+
+body.dark .mat-table thead,
+body.dark [mat-row]{
+    background: #0F172A! important;
+}

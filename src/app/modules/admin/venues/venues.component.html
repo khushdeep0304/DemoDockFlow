@@ -1,0 +1,255 @@
+<!-- <div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto" cdkScrollable *transloco="let t">
+    <div class="flex flex-col flex-auto min-w-0">
+        <div class="flex-auto">
+            <ais-instantsearch [config]="config" class="w-full">
+                <ais-configure [searchParameters]="searchParameters"></ais-configure>
+                <div
+                    class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
+                    <ais-stats>
+                        <ng-template let-state="state">
+                            <div class="text-4xl font-extrabold tracking-tight">
+                                {{state.nbHits}} {{state.nbHits > 1 ? t('Venues') : t('Venue') }}
+                            </div>
+                        </ng-template>
+                    </ais-stats>
+                    <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+                        <ais-search-box></ais-search-box>
+                    </div>
+                </div>
+
+                <ais-hits>
+                    <ng-template let-hits="hits">
+                        <section class="example-container mat-elevation-z8" tabindex="0">
+                            <table mat-table [dataSource]="hits" cdkDropList [cdkDropListData]="hits"
+                                cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Name')}} </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="flex items-center">
+                                            <div (click)="openGalleryModal(row.objectID , row.pictures_url_medium)"
+                                                class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border">
+                                                <img class="w-8" *ngIf="row.pictures_url_thumbnail"
+                                                    [alt]="'venue thumbnail image'"
+                                                    [src]="imagePrefix + row.pictures_url_thumbnail">
+                                                <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
+                                                    *ngIf="!row.pictures_url_thumbnail">
+                                                    NO THUMB
+                                                </div>
+
+                                            </div>
+                                            <div>
+                                                <p (click)="goToUrl(row.slug)"> {{row.pictures_url_medium.length +' ' +
+                                                    row.name }}
+                                                </p>
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="localisation">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Location')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.localisation}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="lieu">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Type')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.lieu.toString()}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="venue_top_tags">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Information')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.venue_top_tags.join(', ')}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="capa_debout_total_max">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Standing')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.capa_debout_total_max}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="capa_assis_total_max">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Sitting')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.capa_assis_total_max}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="rooms">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Rooms')}} </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.rooms}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="surface_total">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Surface')}} </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        {{row.surface_total + "m²"}}
+                                </ng-container>
+                                <ng-container matColumnDef="all_offers">
+                                    <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Offers')}} </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        {{row.all_offers ? row.all_offers.nb_offers +" offers packages from " +
+                                        row.all_offers.min_price_ppl +"€ per pers." :'-'}}
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: columns;">
+                            </table>
+                        </section>
+
+                    </ng-template>
+                </ais-hits>
+                <ais-hits-per-page [items]="[{ label: '5 hits per page', value: 5, default: true },
+                       { label: '10 hits per page', value: 10 }]"></ais-hits-per-page>
+                <ais-pagination></ais-pagination>
+                <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageEvent = $event" aria-label="Select page">
+                </mat-paginator>
+            </ais-instantsearch>
+
+
+
+        </div>
+
+    </div>
+</div> -->
+
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden" cdkScrollable *transloco="let t">
+    <div class="flex flex-col flex-auto min-w-0">
+        <div class="flex-auto">
+            <div
+                class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
+
+                <div class="text-4xl font-extrabold tracking-tight">
+                    {{nbHits}} {{nbHits > 1 ? t('Venues') : t('Venue') }}
+                </div>
+                <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+                    <!-- Search -->
+                    <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64">
+                        <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                        <input matInput [formControl]="searchInputControl" [autocomplete]="'off'"
+                            [placeholder]="t('Search')" (keyup)="getData()">
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div class="filter_btns_wrapper" *ngFor="let attribute of facetsAttribute">
+                <button (click)="searchForFacetValues()">{{attribute.title}}</button>
+            </div>
+            <!-- Tags -->
+            <span class="mb-px font-medium leading-tight">Tags</span>
+            <div class="mt-1.5 rounded-md border border-gray-300 dark:border-gray-500 shadow-sm overflow-hidden">
+                <!-- Header -->
+                <div class="flex items-center -my-px py-2 px-3">
+                    <div class="flex items-center flex-auto min-w-0">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                        <input class="min-w-0 ml-2 py-1 border-0" type="text" placeholder="Enter tag name"
+                            (input)="filterAttributes($event)" [maxLength]="50" #newTagInput>
+                    </div>
+                    <button class="ml-3 w-8 h-8 min-h-8" mat-icon-button (click)="toggleAttributesEditMode()">
+                        <mat-icon *ngIf="!attributesEditMode" class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                        <mat-icon *ngIf="attributesEditMode" class="icon-size-5" [svgIcon]="'heroicons_solid:check'">
+                        </mat-icon>
+                    </button>
+                </div>
+                <!-- Available tags -->
+                <div class="h-44 leading-none overflow-y-auto border-t border-gray-300 dark:border-gray-500">
+                    <!-- Tags -->
+                    <ng-container *ngIf="!attributesEditMode">
+                        <ng-container *ngFor="let tag of filteredAttributes; trackBy: trackByFn">
+                            <mat-checkbox class="flex items-center h-10 min-h-10 px-4" [color]="'primary'"
+                                [checked]="true" (change)="toggleProductAttributes(attribute, $event)">
+                                {{tag.title}}
+                            </mat-checkbox>
+                        </ng-container>
+                    </ng-container>
+                    <!-- Tags editing -->
+                    <ng-container *ngIf="attributesEditMode">
+                        <div class="p-4 space-y-2">
+                            <ng-container *ngFor="let tag of filteredAttributes; trackBy: trackByFn">
+                                <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-full">
+                                    <input matInput [value]="tag.title" (input)="updateTagTitle(tag, $event)">
+                                    <button mat-icon-button (click)="deleteTag(tag)" matSuffix>
+                                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="custom_table">
+                <table class="example-container mat-elevation-z8" tabindex="0" matSort mat-table
+                    [dataSource]="dataSource" cdkDropList [cdkDropListData]="hits" cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)" (matSortChange)="sortChange($event)">
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Name')}} </th>
+                        <td mat-cell *matCellDef="let row">
+                            <div class="flex items-center">
+                                <div (click)="openGalleryModal(row.objectID , row.pictures_url_medium)"
+                                    class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border">
+                                    <img class="w-auto" *ngIf="row.pictures_url_thumbnail"
+                                        [alt]="'venue thumbnail image'"
+                                        [src]="imagePrefix + row.pictures_url_thumbnail">
+                                    <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
+                                        *ngIf="!row.pictures_url_thumbnail">
+                                        NO THUMB
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <a href="javascript:void(0);" class="name_col" (click)="goToUrl(row.slug)"> {{
+                                        row.name }}
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="localisation">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header> {{t('Location')}} </th>
+                        <td mat-cell *matCellDef="let row"> {{row.localisation}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="lieu">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header> {{t('Type')}} </th>
+                        <td mat-cell *matCellDef="let row"> {{row.lieu.toString()}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="venue_top_tags">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Information')}} </th>
+                        <td mat-cell *matCellDef="let row" class="pr-4"> {{row.venue_top_tags.join(', ')}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="capa_debout_total_max">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header> {{t('Standing')}} </th>
+                        <td mat-cell *matCellDef="let row"> {{row.capa_debout_total_max}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="capa_assis_total_max">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header> {{t('Sitting')}} </th>
+                        <td mat-cell *matCellDef="let row"> {{row.capa_assis_total_max}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="rooms">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Rooms')}} </th>
+                        <td mat-cell *matCellDef="let row"> {{row.rooms}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="surface_total">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag> {{t('Surface')}} </th>
+                        <td mat-cell *matCellDef="let row">
+                            {{row.surface_total!=null? row.surface_total + "m²" :""}}
+                    </ng-container>
+                    <ng-container matColumnDef="all_offers">
+                        <th mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header> {{t('Offers')}} </th>
+                        <td mat-cell *matCellDef="let row">
+                            {{row.all_offers ? row.all_offers.nb_offers +" offers packages from " +
+                            row.all_offers.min_price_ppl +"€ per pers." :'-'}}
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columns;">
+                </table>
+            </div>
+
+
+            <mat-paginator #paginator
+                class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                [ngClass]="{'pointer-events-none': isLoading}" [length]="nbHits" [pageIndex]="pageIndex"
+                (page)="pageEvent = getData($event.pageIndex , $event.pageSize)" [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true">
+            </mat-paginator>
+
+
+
+        </div>
+
+    </div>
+</div>
